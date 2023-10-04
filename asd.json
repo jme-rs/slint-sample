@@ -1,0 +1,35 @@
+{
+    "ResultInfo": {
+        "Count": 1,
+        "Total": 1,
+        "Start": 1,
+        "Latency": 0.03,
+        "Status": 200,
+        "Description": "\u6587\u5B57\u5217\u89E3\u6790\u7D50\u679C",
+        "Copyright": "",
+        "CompressType": ""
+    },
+    "Feature": [
+        {
+            "Id": 1,
+            "Name": "\u5343\u8449\u770C",
+            "Description": "\u5343\u8449\u770C",
+            "Geometry": {
+                "Type": "point",
+                "Coordinates": "140.12332295,35.60505986"
+            },
+            "Property": {
+                "Genre": "80",
+                "Query": "\u5343\u8449",
+                "Address": "\u5343\u8449\u770C",
+                "AddressKana": "\u3061\u3070\u3051\u3093",
+                "AddressElement": [
+                    {
+                        "Name": "\u5343\u8449\u770C",
+                        "Kana": "\u3061\u3070\u3051\u3093"
+                    }
+                ]
+            }
+        }
+    ]
+}

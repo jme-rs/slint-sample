@@ -1,0 +1,117 @@
+import { Button, VerticalBox , StandardButton, HorizontalBox, CheckBox} from "std-widgets.slint";
+
+enum Page {
+    Weekly,
+    Hourly,
+    Map,
+    Settings,
+}
+
+export component AppWindow inherits Window {
+    title: "Wether App - Rust Slint";
+    width: 800px;
+    height: 500px;
+
+    property <Page> page_state: Page.Weekly;
+    property <color> tabbar: #00b2c6;
+    property <color> selected_tab: #00868f;
+    property <color> hoverd_tab: #009ca7;
+
+    in-out property <int> count: 0;
+    callback increment();
+    callback decrement();
+
+    HorizontalBox {
+        padding: 0;
+        spacing: 0;
+
+        Rectangle {
+            width: 140px;
+            background: tabbar;
+
+            VerticalBox {
+                padding: 0;
+                spacing: 0;
+                property <[{ state: Page, title: string }]> tabs: [
+                    { state: Page.Weekly, title: "Weekly" },
+                    { state: Page.Hourly, title: "Hourly" },
+                    { state: Page.Map, title: "Map"},
+                ];
+
+                for tab in tabs: Rectangle {
+                    Text {
+                        text: tab.title;
+                        font-size: 18px;
+                        color: Colors.white;
+                    }
+                    height: 45px;
+
+                    tabarea := TouchArea {
+                        clicked => { root.page-state = tab.state; }
+                    }
+                    states [
+                        selected when root.page-state == tab.state: {
+                            background: selected-tab;
+                        }
+                        hoverd when root.page-state != tab.state && tabarea.has-hover: {
+                            background: hoverd-tab;
+                        }
+                        default when root.page-state != tab.state : {
+                            background: tabbar;
+                        }
+                    ]
+                }
+                Rectangle {}
+                Rectangle {
+                    Text {
+                        text: "Settings";
+                        font-size: 18px;
+                        color: Colors.white;
+                    }
+                    height: 45px;
+
+                    tabarea_settings := TouchArea {
+                        clicked => { root.page-state = Page.Settings; }
+                    }
+                    states [
+                        selected when root.page-state == Page.Settings: {
+                            background: selected-tab;
+                        }
+                        hoverd when root.page-state != Page.Settings && tabarea_settings.has-hover: {
+                            background: hoverd-tab;
+                        }
+                        default when root.page-state != Page.Settings : {
+                            background: tabbar;
+                        }
+                    ]
+                }
+            }
+        }
+
+        Rectangle {
+            border-color: Colors.black;
+            border-width: 1px;
+
+            VerticalBox {
+                alignment: start;
+                Text {
+                    text: count;
+                }
+                StandardButton {
+                    // text: "increment";
+                    kind: ok;
+                    clicked => { increment(); }
+                }
+                Button {
+                    text: "decrement";
+                    width: 100px;
+                    height: 50px;
+                    clicked => { decrement() }
+                }
+                CheckBox {
+
+                }
+            }
+        }
+    }
+}
