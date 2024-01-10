@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use url::Url;
 
-const APP_ID: &str = "dj00aiZpPVN3WlVGcUVBRHR5ZyZzPWNvbnN1bWVyc2VjcmV0Jng9YWU-";
+const APP_ID: &str = "-";
 const API_URL: &str = "https://map.yahooapis.jp/geocode/cont/V1/contentsGeoCoder";
 
 #[derive(Debug)]
